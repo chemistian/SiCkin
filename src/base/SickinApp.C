@@ -2,6 +2,7 @@
 #include "Moose.h"
 #include "AppFactory.h"
 #include "ModulesApp.h"
+#include "LaplaceYoung.h"
 
 template<>
 InputParameters validParams<SickinApp>()
@@ -44,6 +45,7 @@ extern "C" void SickinApp__registerObjects(Factory & factory) { SickinApp::regis
 void
 SickinApp::registerObjects(Factory & factory)
 {
+  registerKernel(LaplaceYoung);
 }
 
 // External entry point for dynamic syntax association
