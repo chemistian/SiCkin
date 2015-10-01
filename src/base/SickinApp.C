@@ -1,10 +1,10 @@
-#include "StorkApp.h"
+#include "SickinApp.h"
 #include "Moose.h"
 #include "AppFactory.h"
 #include "ModulesApp.h"
 
 template<>
-InputParameters validParams<StorkApp>()
+InputParameters validParams<SickinApp>()
 {
   InputParameters params = validParams<MooseApp>();
 
@@ -15,40 +15,40 @@ InputParameters validParams<StorkApp>()
   return params;
 }
 
-StorkApp::StorkApp(InputParameters parameters) :
+SickinApp::SickinApp(InputParameters parameters) :
     MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
-  StorkApp::registerObjects(_factory);
+  SickinApp::registerObjects(_factory);
 
   Moose::associateSyntax(_syntax, _action_factory);
   ModulesApp::associateSyntax(_syntax, _action_factory);
-  StorkApp::associateSyntax(_syntax, _action_factory);
+  SickinApp::associateSyntax(_syntax, _action_factory);
 }
 
-StorkApp::~StorkApp()
+SickinApp::~SickinApp()
 {
 }
 
 // External entry point for dynamic application loading
-extern "C" void StorkApp__registerApps() { StorkApp::registerApps(); }
+extern "C" void SickinApp__registerApps() { SickinApp::registerApps(); }
 void
-StorkApp::registerApps()
+SickinApp::registerApps()
 {
-  registerApp(StorkApp);
+  registerApp(SickinApp);
 }
 
 // External entry point for dynamic object registration
-extern "C" void StorkApp__registerObjects(Factory & factory) { StorkApp::registerObjects(factory); }
+extern "C" void SickinApp__registerObjects(Factory & factory) { SickinApp::registerObjects(factory); }
 void
-StorkApp::registerObjects(Factory & factory)
+SickinApp::registerObjects(Factory & factory)
 {
 }
 
 // External entry point for dynamic syntax association
-extern "C" void StorkApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { StorkApp::associateSyntax(syntax, action_factory); }
+extern "C" void SickinApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { SickinApp::associateSyntax(syntax, action_factory); }
 void
-StorkApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+SickinApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
 {
 }
